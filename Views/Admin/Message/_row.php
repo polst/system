@@ -15,7 +15,7 @@ echo admin_theme_widget('tableRow', [
         ],
         [
             'content' => $model->message_enabled ? t('admin', 'Enabled') : t('admin', 'Disabled')
-        ]
+        ],
         [
             'preset' => 'button',
             'content' => admin_theme_widget('tableButtonUpdate', [
