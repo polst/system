@@ -36,6 +36,13 @@ echo admin_theme_widget('formFieldCheckbox', [
     'label' => $model->fieldLabel('message_send_copy_to_admin')
 ]);
 
+echo admin_theme_widget('formFieldCheckbox', [
+    'errors' => $errors, 
+    'name' => 'message_enabled', 
+    'value' => $model->message_enabled,
+    'label' => $model->fieldLabel('message_enabled')
+]);
+
 echo admin_theme_widget('formErrors', ['errors' => $errors]);
 
 echo admin_theme_widget('formButton', [
