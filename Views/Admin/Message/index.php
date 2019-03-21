@@ -29,7 +29,7 @@ echo admin_theme_widget('table', [
             ['content' => '#', 'preset' => 'id small'],
             ['content' => MessageModel::fieldLabel('message_uid')],
             ['content' => MessageModel::fieldLabel('message_subject'), 'preset' => 'small'],
-            ['content' => MessageModel::fieldLabel('message_enabled')]
+            ['content' => MessageModel::fieldLabel('message_enabled')],
             ['options' => ['colspan' => 2]]
         ]
     ],
