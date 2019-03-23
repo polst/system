@@ -7,7 +7,7 @@ Events::on('pre_system', function()
 	helper([
         'app_view', 
         'app_url', 
-        'array_value', 
+        'get_value', 
         'classic_url', 
         'message',
         'theme_widget',

@@ -39,9 +39,3 @@ function classic_current_url($params = [], string $scheme = null, App $altConfig
 {
 	return site_url(classic_uri_string($params), $scheme, $altConfig);
 }
-
-function url_query(string $uri,  array $params = [])
-{
-    
-
-}
