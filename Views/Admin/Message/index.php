@@ -27,9 +27,9 @@ echo admin_theme_widget('table', [
     'head' => [
         'columns' => [
             ['content' => '#', 'preset' => 'id small'],
-            ['content' => MessageModel::fieldLabel('message_uid')],
-            ['content' => MessageModel::fieldLabel('message_subject'), 'preset' => 'small'],
-            ['content' => MessageModel::fieldLabel('message_enabled')],
+            ['content' => MessageModel::label('message_uid')],
+            ['content' => MessageModel::label('message_subject'), 'preset' => 'small'],
+            ['content' => MessageModel::label('message_enabled')],
             ['options' => ['colspan' => 2]]
         ]
     ],

@@ -15,7 +15,7 @@ abstract class BaseMessageModel extends \BasicApp\Core\Model
 
 	protected $returnType = Message::class;
 
-    protected static $fieldLabels = [
+    protected $labels = [
         'message_uid' => 'Message UID',
         'message_subject' => 'Message Subject',
         'message_body' => 'Message Body',
@@ -23,6 +23,8 @@ abstract class BaseMessageModel extends \BasicApp\Core\Model
         'message_send_copy_to_admin' => 'Send Copy to Admin',
         'message_enabled' => 'Enabled'
     ];
+
+    protected $translations = 'messages';
 
 	public static function getMessage(string $uid, bool $create = false, array $params = [])
 	{

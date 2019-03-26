@@ -34,7 +34,7 @@ abstract class BaseMessageConfigModel extends DatabaseConfigModel
         'admin_name' => 'max_length[255]'
     ];
 
-    protected static $fieldLabels = [
+    protected $labels = [
         'from_name' => 'From Name',
         'from_email' => 'From E-mail',
         'smtp_enabled' => 'Use SMTP',
@@ -50,6 +50,8 @@ abstract class BaseMessageConfigModel extends DatabaseConfigModel
         'admin_email' => 'Admin E-mail'
     ];
 
+    protected $translations = 'messages';
+
     public static function getFormName()
     {
         return t('admin.menu', 'E-mail');
@@ -61,82 +63,82 @@ abstract class BaseMessageConfigModel extends DatabaseConfigModel
             [
                 'type' => 'text',
                 'name' => 'from_name',
-                'label' => static::fieldLabel('from_name'),
+                'label' => static::label('from_name'),
                 'value' => $model->from_name
             ],
             [
                 'type' => 'text',
                 'name' => 'from_email',
-                'label' => static::fieldLabel('from_email'),
+                'label' => static::label('from_email'),
                 'value' => $model->from_email
             ],
             [
                 'type' => 'select',
                 'name' => 'reply_to_type',
-                'label' => static::fieldLabel('reply_to_type'),
+                'label' => static::label('reply_to_type'),
                 'value' => $model->reply_to_type,
                 'items' => static::replyToTypeItems([static::REPLY_TO_NONE => '...'])
             ],            
             [
                 'type' => 'text',
                 'name' => 'admin_name',
-                'label' => static::fieldLabel('admin_name'),
+                'label' => static::label('admin_name'),
                 'value' => $model->admin_name
             ],         
             [
                 'type' => 'text',
                 'name' => 'admin_email',
-                'label' => static::fieldLabel('admin_email'),
+                'label' => static::label('admin_email'),
                 'value' => $model->admin_email
             ],
             [
                 'type' => 'select',
                 'name' => 'charset',
-                'label' => static::fieldLabel('charset'),
+                'label' => static::label('charset'),
                 'value' => $model->charset,
                 'items' => static::charsetItems(['' => '...'])
             ],
             [
                 'type' => 'select',
                 'name' => 'encoding',
-                'label' => static::fieldLabel('encoding'),
+                'label' => static::label('encoding'),
                 'value' => $model->encoding,
                 'items' => static::encodingItems(['' => '...'])
             ],
             [
                 'type' => 'checkbox',
                 'name' => 'smtp_enabled',
-                'label' => static::fieldLabel('smtp_enabled'),
+                'label' => static::label('smtp_enabled'),
                 'value' => $model->smtp_enabled
             ],
             [
                 'type' => 'text',
                 'name' => 'smtp_host',
-                'label' => static::fieldLabel('smtp_host'),
+                'label' => static::label('smtp_host'),
                 'value' => $model->smtp_host
             ],
             [
                 'type' => 'text',
                 'name' => 'smtp_port',
-                'label' => static::fieldLabel('smtp_port'),
+                'label' => static::label('smtp_port'),
                 'value' => $model->smtp_port
             ],
             [
                 'type' => 'text',
                 'name' => 'smtp_username',
-                'label' => static::fieldLabel('smtp_username'),
+                'label' => static::label('smtp_username'),
                 'value' => $model->smtp_username
             ],
             [
                 'type' => 'password',
                 'name' => 'smtp_password',
-                'label' => static::fieldLabel('smtp_password'),
+                'label' => static::label('smtp_password'),
                 'value' => $model->smtp_password
             ],
             [
                 'type' => 'select',
                 'name' => 'smtp_secure',
-                'label' => static::fieldLabel('smtp_secure'),
+                'label' => static::label('smtp_secure'),
                 'value' => $model->smtp_secure,
                 'items' => static::smtpSecureItems(['' => '...'])
             ]                                      
