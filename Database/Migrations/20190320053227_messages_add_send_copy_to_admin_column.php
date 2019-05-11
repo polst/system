@@ -2,9 +2,7 @@
 
 namespace BasicApp\System\Database\Migrations;
 
-use CodeIgniter\Database\Migration;
-
-class Migration_messages_add_send_copy_to_admin_column extends Migration
+class Migration_messages_add_send_copy_to_admin_column extends \BasicApp\Core\Migration
 {
 
     public $tableName = 'messages';
