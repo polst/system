@@ -12,12 +12,7 @@ class Migration_messages_add_send_copy_to_admin_column extends Migration
     public function up()
     {
         $this->forge->addColumn($this->tableName, [
-            'message_send_copy_to_admin' => [
-                'type' => 'TINYINT',
-                'constraint' => 1,
-                'default' => 0,
-                'unsigned' => true
-            ]
+            'message_send_copy_to_admin' => $this->boolColumn()
         ]);
     }
 

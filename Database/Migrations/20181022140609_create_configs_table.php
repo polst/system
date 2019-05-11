@@ -6,9 +6,7 @@
  */
 namespace BasicApp\System\Database\Migrations;
 
-use CodeIgniter\Database\Migration;
-
-class Migration_create_configs_table extends Migration
+class Migration_create_configs_table extends \BasicApp\Core\Migration
 {
 
 	public $tableName = 'configs';
@@ -16,32 +14,17 @@ class Migration_create_configs_table extends Migration
 	public function up()
 	{
 		$this->forge->addField([
-			'config_id' => [
-				'type' => 'INT',
-				'constraint' => 11,
-				'unsigned' => true,
-				'auto_increment' => true
-			],
-			'config_updated_at' => [
-				'type' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP',
-				'null' => true
-			],
-			'config_class' => [
-				'type' => 'VARCHAR',
+			'config_id' => $this->primaryColumn(),
+			'config_updated_at' => $this->createdColumn(),
+			'config_class' => $this->stringColumn([
 				'constraint' => 127,
 				'null' => false
-			],
-			'config_property' => [
-				'type' => 'VARCHAR',
+			]),
+			'config_property' => $this->stringColumn([
 				'constraint' => 127,
 				'null' => false
-			],
-			'config_value' => [
-				'type' => 'VARCHAR',
-				'constraint' => 255,
-				'null' => true,
-				'default' => null
-			]
+			]),
+			'config_value' => $this->stringColumn()
 		]);
 
 		$this->forge->addKey('config_id', true);

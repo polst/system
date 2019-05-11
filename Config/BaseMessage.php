@@ -4,12 +4,12 @@
  * @license MIT License
  * @link    http://basic-app.com
  */
-namespace BasicApp\System\Models;
+namespace BasicApp\System\Config;
 
-use BasicApp\Core\DatabaseConfig;
+use BasicApp\System\Models\MessageConfigModel;
 use PHPMailer\PHPMailer\PHPMailer;
 
-abstract class BaseMessageConfig extends DatabaseConfig
+abstract class BaseMessage extends \BasicApp\Core\DatabaseConfig
 {
 
 	public $from_email;

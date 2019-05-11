@@ -6,9 +6,7 @@
  */
 namespace BasicApp\System\Database\Migrations;
 
-use CodeIgniter\Database\Migration;
-
-class Migration_create_messages_table extends Migration
+class Migration_create_messages_table extends \BasicApp\Core\Migration
 {
 
 	public $tableName = 'messages';
@@ -16,41 +14,14 @@ class Migration_create_messages_table extends Migration
 	public function up()
 	{
 		$this->forge->addField([
-			'message_id' => [
-				'type' => 'INT',
-				'constraint' => 11,
-				'unsigned' => true,
-				'auto_increment' => true
-			],
-			'message_uid' => [
-				'type' => 'VARCHAR',
-				'constraint' => 255,
-				'unique' => true,
-				'null' => true,
-				'default' => null
-			],
-			'message_is_html' => [
-				'type' => 'TINYINT',
-				'constraint' => 1,
-				'unsigned' => true,
-				'null' => false,
-				'default' => 1
-			],
-			'message_enabled' => [
-				'type' => 'TINYINT',
-				'constraint' => 1,
-				'unsigned' => true,
-				'null' => false,
-				'default' => 1
-			],			
-			'message_subject' => [
-				'type' => 'VARCHAR',
-				'constraint' => 255
-			],
-			'message_body' => [
-				'type' => 'TEXT',
-				'constraint' => 65535
-			]
+			'message_id' => $this->primaryColumn(),
+			'message_uid' => $this->stringColumn([
+				'unique' => true
+			]),
+			'message_is_html' => $this->boolColumn(),
+			'message_enabled' => $this->boolColumn(),			
+			'message_subject' => $this->stringColumn(),
+			'message_body' => $this->textColumn()
 		]);
 
 		$this->forge->addKey('message_id', true);

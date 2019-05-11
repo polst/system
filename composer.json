@@ -7,10 +7,9 @@
         }
     },
     "require": {
-        "codeigniter4/framework": "dev-master",
-        "codeigniter4/translations": "^4.0@alpha",
 		"phptheme/phptheme-codeigniter4": "dev-master",
         "basic-app/core": "dev-master",
+        "basic-app/module-i18n": "dev-master",
         "basic-app/bootstrap4": "dev-master",    
 		"phpmailer/phpmailer": "^6.0"
     }

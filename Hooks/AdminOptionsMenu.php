@@ -1,0 +1,11 @@
+<?php
+/**
+ * @package Basic App System
+ * @license MIT License
+ * @link    http://basic-app.com
+ */
+namespace BasicApp\System\Hooks;
+
+class AdminOptionsMenu extends BaseAdminOptionsMenu
+{
+}

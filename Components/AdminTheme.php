@@ -4,8 +4,8 @@
  * @license MIT License
  * @link    http://basic-app.com
  */
-namespace BasicApp\System\Models;
+namespace BasicApp\System\Components;
 
-class MessageConfig extends BaseMessageConfig
+class AdminTheme extends BaseAdminTheme
 {
 }

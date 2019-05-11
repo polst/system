@@ -6,17 +6,17 @@
  */
 namespace BasicApp\System\Models;
 
-use BasicApp\Core\DatabaseConfigModel;
+use BasicApp\System\Config\Message;
 use PHPMailer\PHPMailer\PHPMailer;
 
-abstract class BaseMessageConfigModel extends DatabaseConfigModel
+abstract class BaseMessageConfigModel extends \BasicApp\Core\DatabaseConfigModel
 {
 
     const REPLY_TO_NONE = '';
     const REPLY_TO_ADMIN = 'admin';
     const REPLY_TO_FROM = 'from';
 
-    protected $returnType = MessageConfig::class;
+    protected $returnType = Message::class;
 
     protected $validationRules = [
         'from_name' => 'max_length[255]',
