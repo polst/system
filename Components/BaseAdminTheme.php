@@ -16,7 +16,9 @@ abstract class BaseAdminTheme extends Theme
     {
         $config = config(System::class);
 
-        PHPTheme::$namespace = $config->adminTheme;
+        PHPTheme::$namespace = $config->getAdminThemeName();
+
+        PHPTheme::$path = $config->adminTheme;
 
         return PHPTheme::widget($name, $params);
     }

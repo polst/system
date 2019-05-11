@@ -21,7 +21,9 @@ abstract class BaseTheme extends \BasicApp\Core\Theme
     {
         $config = config(System::class);
 
-        PHPTheme::$namespace = $config->theme;
+        PHPTheme::$namespace = $config->getThemeName();
+
+        PHPTheme::$path = $config->theme;
 
         return PHPTheme::widget($name, $params);
     }
