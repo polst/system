@@ -8,7 +8,7 @@ namespace BasicApp\System;
 
 use BasicApp\Admin\Controllers\Config as ConfigController;
 use BasicApp\System\Controllers\Admin\Message as MessageController;
-use BasicApp\Core\Url;
+use BasicApp\Helpers\Url;
 use BasicApp\System\Models\MessageConfigModel;
 use BasicApp\System\Models\SystemConfigModel;
 
@@ -18,13 +18,8 @@ abstract class BaseSystemHooks
     public static function preSystem()
     {
         helper([
-            'app_view', 
-            'app_url', 
-            'get_value', 
-            'classic_url', 
-            'message',
-            'theme_widget',
-            'admin_theme_widget'
+            'app_view',
+            'message'
         ]);
     }
 

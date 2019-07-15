@@ -9,7 +9,7 @@ namespace BasicApp\System\Controllers\Admin;
 use BasicApp\System\Models\Admin\MessageModel;
 use BasicApp\Admin\Models\AdminModel;
 
-abstract class BaseMessage extends \BasicApp\Core\AdminCrudController
+abstract class BaseMessage extends \BasicApp\Admin\AdminCrudController
 {
 
     protected static $roles = [AdminModel::ADMIN_ROLE];

@@ -1,5 +1,7 @@
 <?php
 
+use BasicApp\Helpers\Url;
+
 echo admin_theme_widget('tableRow', [
     'columns' => [
         [
@@ -19,14 +21,14 @@ echo admin_theme_widget('tableRow', [
         [
             'preset' => 'button',
             'content' => admin_theme_widget('tableButtonUpdate', [
-                'url' => classic_url('admin/message/update', ['id' => $model->getPrimaryKey()]),
+                'url' => Url::createUrl('admin/message/update', ['id' => $model->getPrimaryKey()]),
                 'label' => t('admin', 'Update')
             ])
         ],
         [
             'preset' => 'button',
             'content' => admin_theme_widget('tableButtonDelete', [
-                'url' => classic_url('admin/message/delete', ['id' => $model->getPrimaryKey()]),
+                'url' => Url::createUrl('admin/message/delete', ['id' => $model->getPrimaryKey()]),
                 'label' => t('admin', 'Delete')
             ])
         ]

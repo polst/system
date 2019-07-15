@@ -2,11 +2,12 @@
 
 use CodeIgniter\Events\Events;
 use BasicApp\System\Models\MessageModel;
+use BasicApp\Helpers\Url;
 
 require __DIR__ . '/_common.php';
 
 $this->data['actionMenu'][] = [
-	'url' => classic_url('admin/message/create', ['returnUrl' => 'admin/message']), 
+	'url' => Url::returnUrl('admin/message/create'), 
 	'label' => t('admin.menu', 'Add'), 
 	'icon' => 'fa fa-plus',
 	'linkOptions' => [
