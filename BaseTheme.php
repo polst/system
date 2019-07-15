@@ -4,7 +4,7 @@
  * @license MIT License
  * @link    http://basic-app.com
  */
-namespace BasicApp\System\Components;
+namespace BasicApp\System;
 
 use Closure;
 use PHPTheme;
@@ -40,6 +40,13 @@ abstract class BaseTheme extends \BasicApp\Core\Theme
         return form_open($action, $attributes, $hidden);
     }
 
+    public function formOpenMultipart($action = '', $attributes = '', array $hidden = [])
+    {
+        helper(['form']);
+
+        return form_open_multipart($action, $attributes, $hidden);
+    }    
+
     public function formClose()
     {
         helper(['form']);
@@ -74,6 +81,39 @@ abstract class BaseTheme extends \BasicApp\Core\Theme
     }
 
     public function formInput(object $model, string $name, array $options = [])
+    {
+        return $this->widget('formFieldText', [
+            'name'  => $name,
+            'value' => $model->$name,
+            'label' => $model->label($name),
+            'error' => array_key_exists($name, $this->formErrors) ? $this->formErrors[$name] : null,
+            'options' => $options
+        ]);
+    }
+
+    public function formTextarea(object $model, string $name, array $options = [])
+    {
+        return $this->widget('formFieldTextarea', [
+            'name'  => $name,
+            'value' => $model->$name,
+            'label' => $model->label($name),
+            'error' => array_key_exists($name, $this->formErrors) ? $this->formErrors[$name] : null,
+            'options' => $options
+        ]);
+    }
+
+    public function formImage(object $model, string $name, $url = null, array $options = [])
+    {
+        return $this->widget('formFieldImage', [
+            'name'  => $name,
+            'url' => $url,
+            'label' => $model->label($name),
+            'error' => array_key_exists($name, $this->formErrors) ? $this->formErrors[$name] : null,
+            'options' => $options
+        ]);
+    }
+
+    public function formText(object $model, string $name, array $options = [])
     {
         return $this->widget('formFieldText', [
             'name'  => $name,

@@ -4,8 +4,8 @@
  * @license MIT License
  * @link    http://basic-app.com
  */
-namespace BasicApp\System\Hooks;
+namespace BasicApp\System;
 
-class AdminOptionsMenu extends BaseAdminOptionsMenu
+class SystemEvents extends BaseSystemEvents
 {
 }

@@ -4,8 +4,8 @@
  * @license MIT License
  * @link    http://basic-app.com
  */
-namespace BasicApp\System\Components;
+namespace BasicApp\System;
 
-class Events extends BaseEvents
+class SystemHooks extends BaseSystemHooks
 {
 }

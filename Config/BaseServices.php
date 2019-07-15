@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * @package Basic App System
+ * @license MIT License
+ * @link    http://basic-app.com
+ */
 namespace BasicApp\System\Config;
 
 use BasicApp\System\Components\AdminTheme;
@@ -17,16 +21,6 @@ abstract class BaseServices extends \CodeIgniter\Config\BaseService
         }
 
         return static::getSharedInstance('theme');
-    }    
-
-    public static function adminTheme($getShared = false)
-    {
-        if (!$getShared)
-        {
-            return new AdminTheme(new StdClass);
-        }
-
-        return static::getSharedInstance('adminTheme');
     }
 
 }
