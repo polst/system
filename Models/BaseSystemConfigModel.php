@@ -6,21 +6,21 @@
  */
 namespace BasicApp\System\Models;
 
-use BasicApp\System\Config\System as SystemConfig;
+use BasicApp\System\Config\System;
+use BasicApp\Core\Form;
+use BasicApp\System\SystemEvents;
 
 abstract class BaseSystemConfigModel extends \BasicApp\Core\DatabaseConfigModel
 {
 
-    protected $returnType = SystemConfig::class;
+    protected $returnType = System::class;
 
     protected $validationRules = [
-        'theme' => 'max_length[255]|required',
-        'adminTheme' => 'max_length[255]|required'
+        'theme' => 'max_length[255]|required'
     ];
 
     protected $labels = [
-        'theme' => 'Theme',
-        'adminTheme' => 'Admin Theme'
+        'theme' => 'Theme'
     ];
 
     protected $translations = 'system';
@@ -30,34 +30,18 @@ abstract class BaseSystemConfigModel extends \BasicApp\Core\DatabaseConfigModel
         return t('admin.menu', 'System');
     }
 
-    public static function getFormFields($model)
+    public static function renderFields(Form $form)
     {
-        return [
-            [
-                'type' => 'select',
-                'name' => 'theme',
-                'label' => static::label('theme'),
-                'value' => $model->theme,
-                'items' => static::themeListItems()
-            ],            
-            [
-                'type' => 'select',
-                'name' => 'adminTheme',
-                'label' => static::label('adminTheme'),
-                'value' => $model->adminTheme,
-                'items' => static::adminThemeListItems()
-            ]
-        ];
+        $return = '';
+
+        $return .= $form->dropdown('theme', static::themeList(['' => '...']));
+
+        return $return;
     }
 
-    public static function themeListItems()
+    public static function themeList($return = [])
     {
-        return [];
-    }
-
-    public static function adminThemeListItems()
-    {
-        return [];
+        return SystemEvents::themes($return);
     }
 
 }

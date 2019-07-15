@@ -15,48 +15,23 @@ abstract class BaseSystem extends \BasicApp\Core\DatabaseConfig
 
     public $theme;
 
-    public $adminTheme;
-
     public function __construct()
     {
         $this->theme = $this->getDefaultTheme();
 
-        $this->adminTheme = $this->getDefaultAdminTheme();
-
         parent::__construct();
     }
 
-    public static function themeListItems() : array
+    public static function themeList() : array
     {
         $modelClass = static::$modelClass;
 
-        return $modelClass::themeListItems();
-    }
-
-    public static function adminThemeListItems() : array
-    {
-        $modelClass = static::$modelClass;
-
-        return $modelClass::adminThemeListItems();
+        return $modelClass::themeList();
     }
 
     public function getDefaultTheme() : string
     {
-        $items = static::themeListItems();
-
-        if (count($items) > 0)
-        {
-            $items = array_keys($items);
-
-            return array_shift($items);
-        }
-
-        return '';
-    }
-
-    public function getDefaultAdminTheme() : string
-    {
-        $items = static::adminThemeListItems();
+        $items = static::themeList();
 
         if (count($items) > 0)
         {
@@ -72,7 +47,7 @@ abstract class BaseSystem extends \BasicApp\Core\DatabaseConfig
     {
         if ($this->theme)
         {
-             $items = static::themeListItems();
+             $items = static::themeList();
 
              if (array_key_exists($this->theme, $items))
              {
@@ -81,21 +56,6 @@ abstract class BaseSystem extends \BasicApp\Core\DatabaseConfig
         }
 
         return '';
-    }
-
-    public function getAdminThemeName() : string
-    {
-        if ($this->adminTheme)
-        {
-             $items = static::adminThemeListItems();
-
-             if (array_key_exists($this->adminTheme, $items))
-             {
-                return $items[$this->adminTheme];
-             }
-        }
-
-        return '';        
     }
 
 }
