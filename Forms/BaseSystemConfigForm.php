@@ -4,16 +4,16 @@
  * @license MIT License
  * @link    http://basic-app.com
  */
-namespace BasicApp\System\Models;
+namespace BasicApp\System\Forms;
 
-use BasicApp\System\Config\System;
+use BasicApp\System\Config\SystemConfig;
 use BasicApp\Core\Form;
 use BasicApp\System\SystemEvents;
 
-abstract class BaseSystemConfigModel extends \BasicApp\Core\DatabaseConfigModel
+abstract class BaseSystemConfigForm extends \BasicApp\Configs\DatabaseConfigForm
 {
 
-    protected $returnType = System::class;
+    protected $returnType = SystemConfig::class;
 
     protected $validationRules = [
         'theme' => 'max_length[255]|required'
@@ -30,7 +30,7 @@ abstract class BaseSystemConfigModel extends \BasicApp\Core\DatabaseConfigModel
         return t('admin.menu', 'System');
     }
 
-    public static function renderFields(Form $form)
+    public function renderFields(Form $form)
     {
         $return = '';
 

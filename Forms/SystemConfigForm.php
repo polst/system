@@ -4,8 +4,8 @@
  * @license MIT License
  * @link    http://basic-app.com
  */
-namespace BasicApp\System\Models\Admin;
+namespace BasicApp\System\Forms;
 
-class Message extends BaseMessage
+class SystemConfigForm extends BaseSystemConfigForm
 {
 }

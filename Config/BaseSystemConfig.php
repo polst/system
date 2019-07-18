@@ -6,12 +6,12 @@
  */
 namespace BasicApp\System\Config;
 
-use BasicApp\System\Models\SystemConfigModel;
+use BasicApp\System\Forms\SystemConfigForm;
 
-abstract class BaseSystem extends \BasicApp\Core\DatabaseConfig
+abstract class BaseSystemConfig extends \BasicApp\Core\DatabaseConfig
 {
 
-    public static $modelClass = SystemConfigModel::class;
+    protected $modelClass = SystemConfigForm::class;
 
     public $theme;
 
@@ -22,9 +22,9 @@ abstract class BaseSystem extends \BasicApp\Core\DatabaseConfig
         parent::__construct();
     }
 
-    public static function themeList() : array
+    public function themeList() : array
     {
-        $modelClass = static::$modelClass;
+        $modelClass = $this->modelClass;
 
         return $modelClass::themeList();
     }

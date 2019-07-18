@@ -4,8 +4,8 @@
  * @license MIT License
  * @link    http://basic-app.com
  */
-namespace BasicApp\System;
+namespace BasicApp\System\Config;
 
-class Theme extends BaseTheme
+class SystemConfig extends BaseSystemConfig
 {
 }
