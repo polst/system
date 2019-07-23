@@ -4,20 +4,20 @@ namespace BasicApp\System\Commands;
 
 use BasicApp\System\SystemEvents;
 
-class Install extends \BasicApp\Core\Command
+class Seeder extends \BasicApp\Core\Command
 {
 
     protected $group = 'Application';
     
-    protected $name = 'install';
+    protected $name = 'seeder';
     
-    protected $description = 'Runs install trigger.';
+    protected $description = 'Runs seeder trigger.';
 
     public function run(array $params)
     {
-    	SystemEvents::install();
+        SystemEvents::seeder();
 
-    	echo 'done' . "\n";
+        echo 'done' . "\n";
     }
 
 }
