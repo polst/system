@@ -15,7 +15,7 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
 
     const EVENT_SEEDER = 'seeder';
 
-    const EVENT_THEMES = 'themes';
+    const EVENT_THEME_LIST = 'theme_list';
 
     public static function install()
     {
@@ -25,23 +25,7 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
     public static function onInstall($callback)
     {
         static::on(static::EVENT_INSTALL, $callback);
-    }   
-
-    public static function themes($return = [])
-    {
-        $event = new Event;
-
-        $event->return = $return;
-
-        static::trigger(static::EVENT_THEMES, $event);
-
-        return $event->return;
     }
-
-    public static function onThemes($callback)
-    {
-        static::on(static::EVENT_THEMES, $callback);
-    } 
 
     public static function seeder()
     {
@@ -51,6 +35,22 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
     public static function onSeeder($callback)
     {
         static::on(static::EVENT_SEEDER, $callback);
+    }
+
+    public static function themeList($return = [])
+    {
+        $event = new Event;
+
+        $event->result = $return;
+
+        static::trigger(static::EVENT_THEME_LIST, $event);
+
+        return $event->result;
+    }
+
+    public static function onThemeList($callback)
+    {
+        static::on(static::EVENT_THEME_LIST, $callback);
     }
 
 }

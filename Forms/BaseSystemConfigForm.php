@@ -41,7 +41,7 @@ abstract class BaseSystemConfigForm extends \BasicApp\Configs\DatabaseConfigForm
 
     public static function themeList($return = [])
     {
-        return SystemEvents::themes($return);
+        return SystemEvents::themeList($return);
     }
 
 }

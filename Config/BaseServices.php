@@ -6,18 +6,27 @@
  */
 namespace BasicApp\System\Config;
 
-use BasicApp\System\Components\AdminTheme;
-use BasicApp\System\Components\Theme;
-use StdClass;
+use Exception;
 
 abstract class BaseServices extends \CodeIgniter\Config\BaseService
 {
 
-    public static function theme($getShared = false)
+    public static function theme($getShared = true)
     {
         if (!$getShared)
         {
-            return new Theme(new StdClass);
+            $config = new SystemConfig;
+
+            $themeClass = $config->theme;
+
+            if (!$themeClass)
+            {
+                throw new Exception('Theme is not defined.');
+            }
+
+            $theme = new $themeClass;
+
+            return $theme;
         }
 
         return static::getSharedInstance('theme');

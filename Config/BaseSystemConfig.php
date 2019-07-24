@@ -17,9 +17,14 @@ abstract class BaseSystemConfig extends \BasicApp\Configs\DatabaseConfig
 
     public function __construct()
     {
-        $this->theme = $this->getDefaultTheme();
-
         parent::__construct();
+
+        $list = $this->themeList();
+
+        if (!$this->theme || !array_key_exists($this->theme, $list))
+        {
+            $this->theme = $this->getDefaultTheme();
+        }
     }
 
     public function themeList() : array
