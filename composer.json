@@ -9,7 +9,6 @@
     "require": {
         "basic-app/core": "dev-master",
         "basic-app/module-i18n": "dev-master",
-        "basic-app/module-messages": "dev-master",
         "basic-app/module-configs": "dev-master",
         "basic-app/bootstrap4": "dev-master"
     }
