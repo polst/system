@@ -1,11 +1,6 @@
 <?php
-/**
- * @package Basic App System
- * @license MIT License
- * @link    http://basic-app.com
- */
+
 use BasicApp\System\Forms\SystemConfigForm;
-use BasicApp\Configs\Controllers\Admin\Config as ConfigController;
 use BasicApp\Helpers\Url;
 
 BasicApp\Core\CoreEvents::onPreSystem(function() {
@@ -14,17 +9,13 @@ BasicApp\Core\CoreEvents::onPreSystem(function() {
 
 });
 
-BasicApp\Admin\AdminEvents::onAdminMainMenu(function($menu) {
+CodeIgniter\Events\Events::on('admin_main_menu', function($menu) {
 
     $menu->items['system']['url'] = '#';
     $menu->items['system']['label'] = t('admin.menu', 'System');
     $menu->items['system']['icon'] = 'fa fa-wrench';
 
-});
-
-BasicApp\Admin\AdminEvents::onAdminOptionsMenu(function($menu) {
-
-    if (ConfigController::checkAccess())
+    if (BasicApp\Configs\Controllers\Admin\Config::checkAccess())
     {
         $menu->items[SystemConfigForm::class] = [
             'label' => t('admin.menu', 'System'),
