@@ -34,7 +34,7 @@ abstract class BaseSystemConfigForm extends \BasicApp\Configs\DatabaseConfigForm
     {
         $return = '';
 
-        $return .= $form->dropdown('theme', static::themeList(['' => '...']));
+        $return .= $form->dropdownGroup($this, 'theme', static::themeList(['' => '...']));
 
         return $return;
     }
