@@ -8,18 +8,18 @@ namespace BasicApp\System\Commands;
 
 use BasicApp\System\SystemEvents;
 
-class Seeder extends \BasicApp\Core\Command
+class Update extends \BasicApp\Core\Command
 {
 
     protected $group = 'Basic App';
     
-    protected $name = 'ba:seeder';
-    
-    protected $description = 'Runs the "ba:seeder" trigger.';
+    protected $name = 'ba:update';
+
+    protected $description = 'Runs the "ba:update" trigger.';
 
     public function run(array $params)
     {
-        SystemEvents::seeder();
+    	SystemEvents::update();
     }
 
 }

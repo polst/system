@@ -1,8 +1,8 @@
 <?php
 /**
- * @package Basic App System
+ * @author Basic App Dev Team <dev@basic-app.com>
+ * @license MIT
  * @link http://basic-app.com
- * @license MIT License
  */
 if (!function_exists('app_view'))
 {

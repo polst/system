@@ -1,8 +1,8 @@
 <?php
 /**
- * @package Basic App System
- * @license MIT License
- * @link    http://basic-app.com
+ * @author Basic App Dev Team <dev@basic-app.com>
+ * @license MIT
+ * @link http://basic-app.com
  */
 namespace BasicApp\System;
 
@@ -11,20 +11,20 @@ use BasicApp\Core\Event;
 abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
 {
 
-    const EVENT_INSTALL = 'install';
+    const EVENT_UPDATE = 'ba:update';
 
-    const EVENT_SEEDER = 'seeder';
+    const EVENT_SEEDER = 'ba:seeder';
 
-    const EVENT_THEME_LIST = 'theme_list';
+    const EVENT_THEME_LIST = 'ba:theme_list';
 
-    public static function install()
+    public static function update()
     {
-        static::trigger(static::EVENT_INSTALL);
+        static::trigger(static::EVENT_UPDATE);
     }
 
-    public static function onInstall($callback)
+    public static function onUpdate($callback)
     {
-        static::on(static::EVENT_INSTALL, $callback);
+        static::on(static::EVENT_UPDATE, $callback);
     }
 
     public static function seeder()
