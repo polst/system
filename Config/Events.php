@@ -15,6 +15,10 @@ CodeIgniter\Events\Events::on('admin_main_menu', function($menu) {
     $menu->items['system']['label'] = t('admin.menu', 'System');
     $menu->items['system']['icon'] = 'fa fa-wrench';
 
+});
+
+CodeIgniter\Events\Events::on('admin_options_menu', function($menu) {
+
     if (BasicApp\Configs\Controllers\Admin\Config::checkAccess())
     {
         $menu->items[SystemConfigForm::class] = [
