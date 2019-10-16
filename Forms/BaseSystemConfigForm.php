@@ -6,7 +6,7 @@
  */
 namespace BasicApp\System\Forms;
 
-use BasicApp\System\Config\SystemConfig;
+use BasicApp\System\Config\System as SystemConfig;
 use BasicApp\Core\Form;
 use BasicApp\System\SystemEvents;
 

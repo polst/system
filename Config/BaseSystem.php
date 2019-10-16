@@ -8,7 +8,7 @@ namespace BasicApp\System\Config;
 
 use BasicApp\System\Forms\SystemConfigForm;
 
-abstract class BaseSystemConfig extends \BasicApp\Configs\DatabaseConfig
+abstract class BaseSystem extends \BasicApp\Configs\DatabaseConfig
 {
 
     protected $modelClass = SystemConfigForm::class;

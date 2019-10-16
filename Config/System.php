@@ -6,6 +6,6 @@
  */
 namespace BasicApp\System\Config;
 
-class SystemConfig extends BaseSystemConfig
+class System extends BaseSystem
 {
 }
