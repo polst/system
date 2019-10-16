@@ -30,11 +30,11 @@ abstract class BaseSystemConfigForm extends \BasicApp\Configs\DatabaseConfigForm
         return t('admin.menu', 'System');
     }
 
-    public function renderFields(Form $form)
+    public function renderForm(Form $form, $data)
     {
         $return = '';
 
-        $return .= $form->dropdownGroup($this, 'theme', static::themeList(['' => '...']));
+        $return .= $form->dropdownGroup($data, 'theme', static::themeList(['' => '...']));
 
         return $return;
     }
