@@ -8,7 +8,7 @@ namespace BasicApp\System\Commands;
 
 use BasicApp\System\SystemEvents;
 
-class Seeder extends \BasicApp\Core\Command
+class Seed extends \BasicApp\Core\Command
 {
 
     protected $group = 'Basic App';
