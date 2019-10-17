@@ -13,13 +13,13 @@ class Seeder extends \BasicApp\Core\Command
 
     protected $group = 'Basic App';
     
-    protected $name = 'ba:seeder';
+    protected $name = 'ba:seed';
     
-    protected $description = 'Runs the "ba:seeder" trigger.';
+    protected $description = 'Runs the "ba:seed" trigger.';
 
     public function run(array $params)
     {
-        SystemEvents::seeder();
+        SystemEvents::seed();
     }
 
 }

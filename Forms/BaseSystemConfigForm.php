@@ -10,7 +10,7 @@ use BasicApp\System\Config\System as SystemConfig;
 use BasicApp\Core\Form;
 use BasicApp\System\SystemEvents;
 
-abstract class BaseSystemConfigForm extends \BasicApp\Configs\DatabaseConfigForm
+abstract class BaseSystemConfigForm extends \BasicApp\Config\DatabaseConfigForm
 {
 
     protected $returnType = SystemConfig::class;

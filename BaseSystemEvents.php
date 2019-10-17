@@ -15,7 +15,7 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
 
     const EVENT_UPDATE = 'ba:update';
 
-    const EVENT_SEEDER = 'ba:seeder';
+    const EVENT_SEED = 'ba:seed';
 
     const EVENT_THEMES = 'ba:themes';
 
@@ -85,9 +85,9 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
         static::trigger(static::EVENT_UPDATE);
     }
 
-    public static function seeder()
+    public static function seed()
     {
-        static::trigger(static::EVENT_SEEDER);
+        static::trigger(static::EVENT_SEED);
     }
 
     public static function pager($config)
