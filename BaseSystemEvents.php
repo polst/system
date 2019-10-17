@@ -18,7 +18,7 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
     const EVENT_SEED = 'ba:seed';
 
     const EVENT_THEMES = 'ba:themes';
-
+    
     const EVENT_FILTERS = 'ba:filters';
 
     const EVENT_VIEW = 'ba:view';
@@ -77,8 +77,6 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
     {
         static::on(static::EVENT_EMAIL, $callback);
     }
-
-    //
 
     public static function update()
     {
