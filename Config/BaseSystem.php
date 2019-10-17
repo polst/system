@@ -19,7 +19,7 @@ abstract class BaseSystem extends \BasicApp\Configs\DatabaseConfig
     {
         parent::__construct();
 
-        $list = $this->themeList();
+        $list = $this->themes();
 
         if (!$this->theme || !array_key_exists($this->theme, $list))
         {
@@ -27,16 +27,16 @@ abstract class BaseSystem extends \BasicApp\Configs\DatabaseConfig
         }
     }
 
-    public function themeList() : array
+    public function themes() : array
     {
         $modelClass = $this->modelClass;
 
-        return $modelClass::themeList();
+        return $modelClass::themes();
     }
 
     public function getDefaultTheme() : string
     {
-        $items = static::themeList();
+        $items = static::themes();
 
         if (count($items) > 0)
         {
@@ -52,7 +52,7 @@ abstract class BaseSystem extends \BasicApp\Configs\DatabaseConfig
     {
         if ($this->theme)
         {
-             $items = static::themeList();
+             $items = static::themes();
 
              if (array_key_exists($this->theme, $items))
              {

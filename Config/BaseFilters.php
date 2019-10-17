@@ -11,13 +11,7 @@ abstract class BaseFilters extends \CodeIgniter\Config\BaseConfig
     {
         parent::__construct();
 
-        list($this->aliases, $this->globals, $this->methods, $this->filters) = SystemEvents::filtersConfig(
-            $this->aliases,
-            $this->globals,
-            $this->methods,
-            $this->filters
-        );
+        SystemEvents::filters($this);
     }
-
 
 }

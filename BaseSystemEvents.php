@@ -17,29 +17,30 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
 
     const EVENT_SEEDER = 'ba:seeder';
 
-    const EVENT_THEME_LIST = 'ba:theme_list';
+    const EVENT_THEMES = 'ba:themes';
 
-    const EVENT_FILTERS_CONFIG = 'ba:filters_config';
+    const EVENT_FILTERS = 'ba:filters';
 
-    const EVENT_VIEW_CONFIG = 'ba:view_config';
+    const EVENT_VIEW = 'ba:view';
 
-    const EVENT_VALIDATION_CONFIG = 'ba:validation_config';
+    const EVENT_VALIDATION = 'ba:validation';
 
-    const EVENT_PAGER_CONFIG = 'ba:validation_config';
+    const EVENT_PAGER = 'ba:pager';
 
-    public static function update()
+    const EVENT_EMAIL = 'ba:email';
+
+    // CodeIgniter Events
+
+    public static function onPreSystem($callback)
     {
-        static::trigger(static::EVENT_UPDATE);
+        static::on(static::EVENT_PRE_SYSTEM, $callback);
     }
+
+    // Basic App Events
 
     public static function onUpdate($callback)
     {
         static::on(static::EVENT_UPDATE, $callback);
-    }
-
-    public static function seeder()
-    {
-        static::trigger(static::EVENT_SEEDER);
     }
 
     public static function onSeeder($callback)
@@ -47,118 +48,102 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
         static::on(static::EVENT_SEEDER, $callback);
     }
 
-    public static function onThemeList($callback)
+    public static function onThemes($callback)
     {
-        static::on(static::EVENT_THEME_LIST, $callback);
+        static::on(static::EVENT_THEMES, $callback);
     }
 
-    public static function onPreSystem($callback)
+    public static function onFilters($callback)
     {
-        static::on(static::EVENT_PRE_SYSTEM, $callback);
+        static::on(static::EVENT_FILTERS, $callback);
     }
 
-    public static function onFiltersConfig($callback)
+    public static function onView($callback)
     {
-        static::on(static::EVENT_FILTERS_CONFIG, $callback);
+        static::on(static::EVENT_VIEW, $callback);
     }
 
-    public static function onPagerConfig($callback)
+    public static function onValidation($callback)
     {
-        static::on(static::EVENT_PAGER_CONFIG, $callback);
+        static::on(static::EVENT_VALIDATION, $callback);
     }
 
-    public static function onViewConfig($callback)
+    public static function onPager($callback)
     {
-        static::on(static::EVENT_VIEW_CONFIG, $callback);
-    }    
-
-    public static function onValidationConfig($callback)
-    {
-        static::on(static::EVENT_VALIDATION_CONFIG, $callback);
+        static::on(static::EVENT_PAGER, $callback);
     }
 
-    public static function pagerConfig($templates, $perPage)
+    public static function onEmail($callback)
+    {
+        static::on(static::EVENT_EMAIL, $callback);
+    }
+
+    //
+
+    public static function update()
+    {
+        static::trigger(static::EVENT_UPDATE);
+    }
+
+    public static function seeder()
+    {
+        static::trigger(static::EVENT_SEEDER);
+    }
+
+    public static function pager($config)
     {
         $event = new Event;
 
-        $event->templates = $templates;
+        $event->config = $config;
 
-        $event->perPage =  $perPage;
-
-        static::trigger(static::EVENT_PAGER_CONFIG, $event);
-
-        return [
-            $event->templates,
-            $event->perPage
-        ];
+        static::trigger(static::EVENT_PAGER, $event);
     }
 
-    public static function validationConfig($ruleSets, $templates)
+    public static function validation($config)
     {
         $event = new Event;
 
-        $event->ruleSets = $ruleSets;
+        $event->config = $config;
 
-        $event->templates = $templates;
-
-        static::trigger(static::EVENT_VALIDATION_CONFIG, $event);
-
-        return [
-            $event->ruleSets,
-            $event->templates
-        ];
+        static::trigger(static::EVENT_VALIDATION, $event);
     }
 
-    public static function viewConfig($saveData, $filters, $plugins)
+    public static function view($config)
     {
         $event = new Event;
 
-        $event->saveData = $saveData;
+        $event->config = $config;
 
-        $event->filters = $filters;
-
-        $event->plugins = $plugins;
-
-        static::trigger(static::EVENT_VIEW_CONFIG, $event);
-
-        return [
-            $event->saveData,
-            $event->filters,
-            $event->plugins
-        ];
+        static::trigger(static::EVENT_VIEW, $event);
     }
 
-    public static function filtersConfig($aliases, $globals, $methods, $filters)
+    public static function filters($config)
     {
         $event = new Event;
 
-        $event->aliases = $aliases;
+        $event->config = $config;
 
-        $event->globals =  $globals;
-
-        $event->methods = $methods;
-
-        $event->filters = $filters;
-
-        static::trigger(static::EVENT_FILTERS_CONFIG, $event);
-
-        return [
-            $event->aliases,
-            $event->globals,
-            $event->methods,
-            $event->filters
-        ];
+        static::trigger(static::EVENT_FILTERS, $event);
     }
 
-    public static function themeList($return = [])
+    public static function themes($return = [])
     {
         $event = new Event;
 
         $event->result = $return;
 
-        static::trigger(static::EVENT_THEME_LIST, $event);
+        static::trigger(static::EVENT_THEMES, $event);
 
         return $event->result;
+    }
+
+    public static function email($config)
+    {
+        $event = new Event;
+
+        $event->config = $config;
+
+        static::trigger(static::EVENT_EMAIL, $event);
     }
 
 }

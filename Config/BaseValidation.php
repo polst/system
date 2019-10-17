@@ -9,10 +9,7 @@ abstract class BaseValidation
 
     public function __construct()
     {
-        list($this->ruleSets, $this->templates) = SystemEvents::validationConfig(
-            $this->ruleSets, 
-            $this->templates
-        );
+        SystemEvents::validation($this);
     }
 
 }

@@ -13,7 +13,7 @@ abstract class BasePager extends \CodeIgniter\Config\BaseConfig
 
         $this->templates['theme'] = 'BasicApp\System\pager';
 
-        list($this->templates, $this->perPage) = SystemEvents::pagerConfig($this->templates, $this->perPage);
+        SystemEvents::pager($this);
     }
 
 }
