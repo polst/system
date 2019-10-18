@@ -15,13 +15,13 @@ abstract class BaseServices extends \CodeIgniter\Config\BaseService
     {
         if (!$getShared)
         {
-            $config = new SystemConfig;
+            $systemConfig = config(System::class);
 
-            $themeClass = $config->theme;
+            $themeClass = $systemConfig->theme;
 
             if (!$themeClass)
             {
-                throw new Exception('Theme is not defined.');
+                throw new Exception('Theme not defined.');
             }
 
             $theme = new $themeClass;
