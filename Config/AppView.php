@@ -4,10 +4,8 @@
  * @license MIT
  * @link http://basic-app.com
  */
-use BasicApp\System\SystemEvents;
+namespace BasicApp\System\Config;
 
-SystemEvents::onPreSystem(function() {
-
-    helper('app_view');
-
-});
+abstract class AppView extends BaseAppView
+{
+}
