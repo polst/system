@@ -19,16 +19,11 @@ abstract class BaseSystemConfigForm extends \BasicApp\Config\BaseConfigForm
         'theme' => 'max_length[255]|required'
     ];
 
-    protected $labels = [
+    protected $fieldLabels = [
         'theme' => 'Theme'
     ];
 
     protected $translations = 'system';
-
-    public static function getFormName()
-    {
-        return t('admin.menu', 'System');
-    }
 
     public function renderForm(Form $form, $data)
     {
