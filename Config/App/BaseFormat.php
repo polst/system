@@ -4,8 +4,8 @@
  * @license MIT
  * @link http://basic-app.com
  */
-namespace BasicApp\System\Config;
+namespace BasicApp\System\Config\App;
 
-abstract class AppEmail extends BaseAppEmail
+abstract class BaseFormat extends \BasicApp\System\Components\Config\AppFormat
 {
 }

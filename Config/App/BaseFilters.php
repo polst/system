@@ -4,8 +4,8 @@
  * @license MIT
  * @link http://basic-app.com
  */
-namespace BasicApp\System\Config;
+namespace BasicApp\System\Config\App;
 
-abstract class AppPager extends BaseAppPager
+abstract class BaseFilters extends \BasicApp\System\Components\Config\AppFilters
 {
 }

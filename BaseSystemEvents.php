@@ -29,23 +29,47 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
 
     const EVENT_EMAIL = 'ba:email';
 
-    // CodeIgniter Events
+    const EVENT_USER_AGENTS = 'ba:user_agents';
+
+    const EVENT_CONTROLLER = 'ba:controller';
+
+    const EVENT_REGISTER_ASSETS = 'ba:controller';
+
+    const EVENT_MAIN_MENU = 'ba:main_menu';
+
+    public static function onMainMenu($callback)
+    {
+        static::on(static::EVENT_MAIN_MENU, $callback);
+    }
+
+    public static function onRegisterAssets($callback)
+    {
+        static::on(static::EVENT_REGISTER_ASSETS, $callback);
+    }
 
     public static function onPreSystem($callback)
     {
         static::on(static::EVENT_PRE_SYSTEM, $callback);
     }
 
-    // Basic App Events
+    public static function onController($callback)
+    {
+        static::on(static::EVENT_CONTROLLER, $callback);
+    }
+    
+    public static function onUserAgents($callback)
+    {
+        static::on(static::EVENT_USER_AGENTS, $callback);
+    }
 
     public static function onUpdate($callback)
     {
         static::on(static::EVENT_UPDATE, $callback);
     }
 
-    public static function onSeeder($callback)
+    public static function onSeed($callback)
     {
-        static::on(static::EVENT_SEEDER, $callback);
+        static::on(static::EVENT_SEED, $callback);
     }
 
     public static function onThemes($callback)
@@ -144,4 +168,61 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
         static::trigger(static::EVENT_EMAIL, $event);
     }
 
+    public static function userAgents($config)
+    {
+        $event = new Event;
+
+        $event->config = $config;
+
+        static::trigger(static::EVENT_USER_AGENTS, $event);
+    }
+
+    public static function controller($controller)
+    {
+        $event = new Event;
+
+        $event->controller = $controller;
+
+        static::trigger(static::EVENT_CONTROLLER, $event);
+    }
+
+    public static function registerAssets(&$head, &$beginBody, &$endBody)
+    {
+        $event = new Event;
+
+        $event->head = $head;
+
+        $event->beginBody = $beginBody;
+
+        $event->endBody = $endBody;
+
+        static::trigger(static::EVENT_REGISTER_ASSETS, $event);
+
+        $head = $event->head;
+
+        $beginBody = $event->beginBody;
+
+        $endBody = $event->endBody;
+    }
+
+    public static function mainMenu(array $items = [])
+    {
+        $event = new Event;
+
+        $event->items = $items;
+
+        static::trigger(static::EVENT_MAIN_MENU, $event);
+
+        $view = service('renderer');
+
+        $data = $view->getData();
+
+        if (array_key_exists('mainMenu', $data))
+        {
+            return array_merge_recursive($event->items, $data['mainMenu']);
+        }
+
+        return $event->items;
+    }
+    
 }

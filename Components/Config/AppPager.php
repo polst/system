@@ -4,11 +4,11 @@
  * @license MIT
  * @link http://basic-app.com
  */
-namespace BasicApp\System\Config;
+namespace BasicApp\System\Components\Config;
 
 use BasicApp\System\SystemEvents;
 
-abstract class BaseAppPager extends \CodeIgniter\Config\BaseConfig
+abstract class AppPager extends \CodeIgniter\Config\BaseConfig
 {
 
     public function __construct()

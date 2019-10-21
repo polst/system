@@ -4,8 +4,8 @@
  * @license MIT
  * @link http://basic-app.com
  */
-namespace BasicApp\System\Config;
+namespace BasicApp\System\Components\Config;
 
-abstract class AppView extends BaseAppView
+abstract class AppExceptions
 {
 }

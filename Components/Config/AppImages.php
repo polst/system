@@ -4,18 +4,18 @@
  * @license MIT
  * @link http://basic-app.com
  */
-namespace BasicApp\System\Config;
+namespace BasicApp\System\Components\Config;
 
 use BasicApp\System\SystemEvents;
 
-abstract class BaseAppView extends \CodeIgniter\Config\View
+abstract class AppImages extends \CodeIgniter\Config\BaseConfig
 {
 
     public function __construct()
     {
         parent::__construct();
 
-        SystemEvents::view($this);
+        SystemEvents::images($this);
     }
 
 }

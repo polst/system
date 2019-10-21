@@ -4,8 +4,8 @@
  * @license MIT
  * @link http://basic-app.com
  */
-namespace BasicApp\System\Config;
+namespace BasicApp\System\Components\Config;
 
-abstract class AppFilters extends BaseAppFilters
+abstract class AppCache extends \CodeIgniter\Config\BaseConfig
 {
 }
