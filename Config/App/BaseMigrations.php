@@ -6,6 +6,6 @@
  */
 namespace BasicApp\System\Config\App;
 
-abstract class BaseMigraions extends \BasicApp\System\Components\Config\AppMigrations
+abstract class BaseMigrations extends \BasicApp\System\Components\Config\AppMigrations
 {
 }
