@@ -11,6 +11,8 @@ use BasicApp\Core\Event;
 abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
 {
 
+    const EVENT_DB_QUERY = 'DBQuery';
+
     const EVENT_PRE_SYSTEM = 'pre_system';
 
     const EVENT_UPDATE = 'ba:update';
@@ -50,6 +52,11 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
     public static function onPreSystem($callback)
     {
         static::on(static::EVENT_PRE_SYSTEM, $callback);
+    }
+
+    public static function onDbQuery($callback)
+    {
+        static::on(static::EVENT_DB_QUERY, $callback);
     }
 
     public static function onController($callback)
