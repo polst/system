@@ -37,13 +37,6 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
 
     const EVENT_REGISTER_ASSETS = 'ba:controller';
 
-    const EVENT_MAIN_MENU = 'ba:main_menu';
-
-    public static function onMainMenu($callback)
-    {
-        static::on(static::EVENT_MAIN_MENU, $callback);
-    }
-
     public static function onRegisterAssets($callback)
     {
         static::on(static::EVENT_REGISTER_ASSETS, $callback);
@@ -211,25 +204,5 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
 
         $endBody = $event->endBody;
     }
-
-    public static function mainMenu(array $items = [])
-    {
-        $event = new Event;
-
-        $event->items = $items;
-
-        static::trigger(static::EVENT_MAIN_MENU, $event);
-
-        $view = service('renderer');
-
-        $data = $view->getData();
-
-        if (array_key_exists('mainMenu', $data))
-        {
-            return array_merge_recursive($event->items, $data['mainMenu']);
-        }
-
-        return $event->items;
-    }
-    
+       
 }

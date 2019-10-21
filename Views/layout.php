@@ -7,10 +7,24 @@ $theme = service('theme');
 
 SystemEvents::registerAssets($theme->head, $theme->beginBody, $theme->endBody);
 
+if (class_exists(BasicApp\Site\SiteEvents::class))
+{
+    $mainMenu = menu_items('main', true, ['menu_name' => 'Main Menu']);
+}
+else
+{
+    $mainMenu = [];
+}
+
+if (array_key_exists('mainMenu', $this->data))
+{
+    $mainMenu = array_merge_recursive($mainMenu, $this->data['mainMenu']);
+}
+
 echo $theme->mainLayout([
     'title' => array_key_exists('title', $this->data) ? $this->data['title'] : '',
     'mainMenu' => [
-        'items' => SystemEvents::mainMenu()
+        'items' => $mainMenu
     ],
     'actionMenu' => [
         'items' => array_key_exists('actionMenu', $this->data) ? $this->data['actionMenu'] : []
