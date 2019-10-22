@@ -22,24 +22,27 @@ if (array_key_exists('mainMenu', $this->data))
     $mainMenu = array_merge_recursive($mainMenu, $this->data['mainMenu']);
 }
 
-$siteName = 'Basic App';
+$defaultTitle = 'My Site';
+
+$siteName = 'My Site';
+
+$copyright = '&copy; My Company {year}'; 
 
 if (class_exists(SiteEvents::class))
 {
-    $siteName = block('layout.siteName', 'Basic App');
+    $siteName = block('layout.siteName', $siteName);
+
+    $copyright = block('layout.copyright', $copyright);
+
+    $defaultTitle = block('layout.defaultTitle', $defaultTitle);
 }
 
 echo $theme->mainLayout([
-    'title' => array_key_exists('title', $this->data) ? $this->data['title'] : '',
+    'title' => array_key_exists('title', $this->data) ? $this->data['title'] : $defaultTitle,
     'siteName' => $siteName,
-    'mainMenu' => [
-        'items' => $mainMenu
-    ],
-    'actionMenu' => [
-        'items' => array_key_exists('actionMenu', $this->data) ? $this->data['actionMenu'] : []
-    ],
-    'breadcrumbs' => [
-        'items' => array_key_exists('breadcrumbs', $this->data) ? $this->data['breadcrumbs'] : []
-    ],
-    'content' => $content
+    'mainMenu' => $mainMenu,
+    'actionMenu' => array_key_exists('actionMenu', $this->data) ? $this->data['actionMenu'] : [],
+    'breadcrumbs' => array_key_exists('breadcrumbs', $this->data) ? $this->data['breadcrumbs'] : [],
+    'content' => $content,
+    'copyright' => $copyright
 ]);
