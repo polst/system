@@ -2,6 +2,7 @@
 
 use BasicApp\Helpers\Url;
 use BasicApp\System\SystemEvents;
+use BasicApp\Site\SiteEvents;
 
 $theme = service('theme');
 
@@ -21,8 +22,16 @@ if (array_key_exists('mainMenu', $this->data))
     $mainMenu = array_merge_recursive($mainMenu, $this->data['mainMenu']);
 }
 
+$siteName = 'Basic App';
+
+if (class_exists(SiteEvents::class))
+{
+    $siteName = block('layout.siteName', 'Basic App');
+}
+
 echo $theme->mainLayout([
     'title' => array_key_exists('title', $this->data) ? $this->data['title'] : '',
+    'siteName' => $siteName,
     'mainMenu' => [
         'items' => $mainMenu
     ],
