@@ -23,7 +23,11 @@ abstract class BaseSystemConfigForm extends \BasicApp\Config\BaseConfigForm
         'theme' => 'Theme'
     ];
 
-    protected $translations = 'system';
+    protected $allowedFields = [
+        'theme'
+    ];
+
+    protected $langCategory = 'system';
 
     public function renderForm(Form $form, $data)
     {
