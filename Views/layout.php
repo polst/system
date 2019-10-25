@@ -47,4 +47,5 @@ echo $theme->mainLayout([
     'content' => $content,
     'copyright' => $copyright,
     'description' => array_key_exists('description', $this->data) ? $this->data['description'] : $defaultDescription,
+    'homeUrl' => base_url()
 ]);
