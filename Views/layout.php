@@ -46,6 +46,5 @@ echo $theme->mainLayout([
     'breadcrumbs' => array_key_exists('breadcrumbs', $this->data) ? $this->data['breadcrumbs'] : [],
     'content' => $content,
     'copyright' => $copyright,
-    'description' => array_key_exists('description', $this->data) ? $this->data['description'] : $defaultDescription,
-    'homeUrl' => base_url()
+    'description' => array_key_exists('description', $this->data) ? $this->data['description'] : $defaultDescription
 ]);
