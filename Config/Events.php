@@ -8,6 +8,7 @@ use BasicApp\System\SystemEvents;
 use BasicApp\Admin\AdminEvents;
 use BasicApp\Site\SiteEvents;
 use BasicApp\Helpers\Url;
+use BasicApp\System\Forms\SystemConfigForm;
 
 SystemEvents::onPreSystem(function() {
 
