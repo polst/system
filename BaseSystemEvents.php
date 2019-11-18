@@ -134,40 +134,24 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
         static::trigger(static::EVENT_SEED, $event);
     }
 
-    public static function pager($config)
+    public static function pager($pager)
     {
-        $event = new Event;
-
-        $event->config = $config;
-
-        static::trigger(static::EVENT_PAGER, $event);
+        static::trigger(static::EVENT_PAGER, $pager);
     }
 
-    public static function validation($config)
+    public static function validation($validation)
     {
-        $event = new Event;
-
-        $event->config = $config;
-
-        static::trigger(static::EVENT_VALIDATION, $event);
+        static::trigger(static::EVENT_VALIDATION, $validation);
     }
 
-    public static function view($config)
+    public static function view($view)
     {
-        $event = new Event;
-
-        $event->config = $config;
-
-        static::trigger(static::EVENT_VIEW, $event);
+        static::trigger(static::EVENT_VIEW, $view);
     }
 
-    public static function filters($config)
+    public static function filters($filters)
     {
-        $event = new Event;
-
-        $event->config = $config;
-
-        static::trigger(static::EVENT_FILTERS, $event);
+        static::trigger(static::EVENT_FILTERS, $filters);
     }
 
     public static function themes($return = [])
@@ -181,31 +165,19 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
         return $event->result;
     }
 
-    public static function email($config)
+    public static function email($email)
     {
-        $event = new Event;
-
-        $event->config = $config;
-
-        static::trigger(static::EVENT_EMAIL, $event);
+        static::trigger(static::EVENT_EMAIL, $email);
     }
 
-    public static function userAgents($config)
+    public static function userAgents($userAgents)
     {
-        $event = new Event;
-
-        $event->config = $config;
-
-        static::trigger(static::EVENT_USER_AGENTS, $event);
+        static::trigger(static::EVENT_USER_AGENTS, $userAgents);
     }
 
     public static function controller($controller)
     {
-        $event = new Event;
-
-        $event->controller = $controller;
-
-        static::trigger(static::EVENT_CONTROLLER, $event);
+        static::trigger(static::EVENT_CONTROLLER, $controller);
     }
 
     public static function registerAssets(&$head, &$beginBody, &$endBody)

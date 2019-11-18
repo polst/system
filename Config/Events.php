@@ -10,10 +10,15 @@ use BasicApp\Site\SiteEvents;
 use BasicApp\Helpers\Url;
 use BasicApp\System\Forms\SystemConfigForm;
 
-SystemEvents::onPreSystem(function() {
-
+SystemEvents::onPreSystem(function()
+{
     helper('app_view');
+});
 
+SystemEvents::onValidation(function($event)
+{
+    $event->ruleSets[] = BasicApp\Validators\HtmlTagsValidator::class;
+    $event->ruleSets[] = BasicApp\Validators\HtmlSpecialCharsValidator::class;
 });
 
 if (class_exists(SiteEvents::class))
