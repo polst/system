@@ -8,7 +8,7 @@
     },
     "require": {
         "basic-app/core": "*",
-        "basic-app/module-config": "*",
+        "basic-app/module-configs": "*",
         "basic-app/module-i18n": "*"
     }
 }
