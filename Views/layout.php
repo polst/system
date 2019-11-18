@@ -38,6 +38,8 @@ if (class_exists(SiteEvents::class))
     $defaultDescription = block('layout.defaultDescription', $defaultDescription);
 }
 
+$session = service('session');
+
 echo $theme->mainLayout([
     'title' => array_key_exists('title', $this->data) ? $this->data['title'] : $defaultTitle,
     'siteName' => $siteName,
@@ -46,5 +48,8 @@ echo $theme->mainLayout([
     'breadcrumbs' => array_key_exists('breadcrumbs', $this->data) ? $this->data['breadcrumbs'] : [],
     'content' => $content,
     'copyright' => $copyright,
-    'description' => array_key_exists('description', $this->data) ? $this->data['description'] : $defaultDescription
+    'description' => array_key_exists('description', $this->data) ? $this->data['description'] : $defaultDescription,
+    'successMessages' => (array) $session->getFlashdata('success'),
+    'errorMessages' => (array) $session->getFlashdata('error'),
+    'infoMessages' => (array) $session->getFlashdata('info')
 ]);
