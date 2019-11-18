@@ -19,7 +19,7 @@ class Seed extends \BasicApp\Core\Command
 
     public function run(array $params)
     {
-        SystemEvents::seed();
+        SystemEvents::seed($params);
     }
 
 }

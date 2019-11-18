@@ -118,9 +118,20 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
         static::trigger(static::EVENT_UPDATE, $event);
     }
 
-    public static function seed()
+    public static function seed(array $params = [])
     {
-        static::trigger(static::EVENT_SEED);
+        $event = new Event;
+
+        if (array_search('reset', $params) !== false)
+        {
+            $event->reset = true;
+        }
+        else
+        {
+            $event->reset = false;
+        }
+
+        static::trigger(static::EVENT_SEED, $event);
     }
 
     public static function pager($config)
