@@ -19,7 +19,7 @@ class Update extends \BasicApp\Core\Command
 
     public function run(array $params)
     {
-    	SystemEvents::update();
+    	SystemEvents::update($params);
     }
 
 }

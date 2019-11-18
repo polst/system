@@ -102,9 +102,20 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
         static::on(static::EVENT_EMAIL, $callback);
     }
 
-    public static function update()
+    public static function update(array $params = [])
     {
-        static::trigger(static::EVENT_UPDATE);
+        $event = new Event;
+
+        if (array_search('reset', $params) !== false)
+        {
+            $event->reset = true;
+        }
+        else
+        {
+            $event->reset = false;
+        }
+
+        static::trigger(static::EVENT_UPDATE, $event);
     }
 
     public static function seed()
