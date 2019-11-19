@@ -18,7 +18,8 @@ SystemEvents::onPreSystem(function()
 SystemEvents::onValidation(function($event)
 {
     $event->ruleSets[] = BasicApp\Validators\HtmlTagsValidator::class;
-    $event->ruleSets[] = BasicApp\Validators\SpecialCharsValidator::class;
+    $event->ruleSets[] = BasicApp\Validators\NotHtmlTagsValidator::class;
+    $event->ruleSets[] = BasicApp\Validators\NotSpecialCharsValidator::class;
 });
 
 if (class_exists(SiteEvents::class))
