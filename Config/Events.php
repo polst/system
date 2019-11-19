@@ -25,23 +25,19 @@ SystemEvents::onValidation(function($event)
 if (class_exists(SiteEvents::class))
 {
     SiteEvents::onSeed(function($created) {
-
         if ($created)
         {
             block('layout.siteName', 'My Site');
-
             block('layout.copyright', '&copy; My Company {year}');
-
             block('layout.defaultTitle', 'My Site Default Title');
         }
-
     });
 }
 
 if (class_exists(AdminEvents::class))
 {
-    AdminEvents::onOptionsMenu(function($event) {
-
+    AdminEvents::onOptionsMenu(function($event)
+    {
         if (BasicApp\Config\Controllers\Admin\Config::checkAccess())
         {
             $event->items[SystemConfigForm::class] = [
@@ -50,6 +46,5 @@ if (class_exists(AdminEvents::class))
                 'url' => Url::createUrl('admin/config', ['class' => SystemConfigForm::class])
             ];
         }
-
     });
 }
