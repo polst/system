@@ -22,6 +22,10 @@ if (array_key_exists('mainMenu', $this->data))
     $mainMenu = array_merge_recursive($mainMenu, $this->data['mainMenu']);
 }
 
+$userMenu = SystemEvents::userMenu();
+
+$accountMenu = SystemEvents::accountMenu();
+
 $defaultTitle = 'My Site';
 
 $siteName = 'My Site';
@@ -44,6 +48,8 @@ echo $theme->mainLayout([
     'title' => array_key_exists('title', $this->data) ? $this->data['title'] : $defaultTitle,
     'siteName' => $siteName,
     'mainMenu' => $mainMenu,
+    'userMenu' => $userMenu,
+    'accountMenu' => $accountMenu,
     'actionMenu' => array_key_exists('actionMenu', $this->data) ? $this->data['actionMenu'] : [],
     'breadcrumbs' => array_key_exists('breadcrumbs', $this->data) ? $this->data['breadcrumbs'] : [],
     'content' => $content,

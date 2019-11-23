@@ -37,6 +37,20 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
 
     const EVENT_REGISTER_ASSETS = 'ba:controller';
 
+    const EVENT_USER_MENU = 'ba:user_menu';
+
+    const EVENT_ACCOUNT_MENU = 'ba:account_menu';
+
+    public static function onUserMenu($callback)
+    {
+        static::on(static::EVENT_USER_MENU, $callback);
+    }
+
+    public static function onAccountMenu($callback)
+    {
+        static::on(static::EVENT_ACCOUNT_MENU, $callback);
+    }
+
     public static function onRegisterAssets($callback)
     {
         static::on(static::EVENT_REGISTER_ASSETS, $callback);
@@ -197,6 +211,46 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
         $beginBody = $event->beginBody;
 
         $endBody = $event->endBody;
+    }
+
+    public static function userMenu()
+    {
+        $event = new Event;
+
+        $event->items = [];
+
+        static::trigger(static::EVENT_USER_MENU, $event);
+
+        $view = service('renderer');
+
+        $data = $view->getData();
+
+        if (array_key_exists('userMenu', $data))
+        {
+            return array_merge_recursive($event->items, $data['userMenu']);
+        }
+
+        return $event->items;
+    }
+
+    public static function accountMenu()
+    {
+        $event = new Event;
+
+        $event->items = [];
+
+        static::trigger(static::EVENT_ACCOUNT_MENU, $event);
+
+        $view = service('renderer');
+
+        $data = $view->getData();
+
+        if (array_key_exists('accountMenu', $data))
+        {
+            return array_merge_recursive($event->items, $data['accountMenu']);
+        }
+
+        return $event->items;
     }
        
 }
