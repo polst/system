@@ -41,9 +41,16 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
 
     const EVENT_ACCOUNT_MENU = 'ba:account_menu';
 
+    const EVENT_MAIN_LAYOUT = 'ba:main_layout';
+
     public static function onUserMenu($callback)
     {
         static::on(static::EVENT_USER_MENU, $callback);
+    }
+
+    public static function onMainLayout($callback)
+    {
+        static::on(static::EVENT_MAIN_LAYOUT, $callback);
     }
 
     public static function onAccountMenu($callback)
@@ -251,6 +258,17 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
         }
 
         return $event->items;
+    }
+
+    public static function mainLayout(array $params = [])
+    {
+        $event = new Event;
+
+        $event->params = $params;
+
+        static::trigger(static::EVENT_MAIN_LAYOUT, $event);
+
+        return $event->params;
     }
        
 }

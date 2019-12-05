@@ -44,7 +44,7 @@ if (class_exists(SiteEvents::class))
 
 $session = service('session');
 
-echo $theme->mainLayout([
+$params = SystemEvents::mainLayout([
     'title' => array_key_exists('title', $this->data) ? $this->data['title'] : $defaultTitle,
     'siteName' => $siteName,
     'mainMenu' => $mainMenu,
@@ -59,3 +59,5 @@ echo $theme->mainLayout([
     'errorMessages' => (array) $session->getFlashdata('error'),
     'infoMessages' => (array) $session->getFlashdata('info')
 ]);
+
+echo $theme->mainLayout($params);
