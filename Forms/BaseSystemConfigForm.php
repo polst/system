@@ -16,7 +16,7 @@ abstract class BaseSystemConfigForm extends \BasicApp\Config\BaseConfigForm
     protected $returnType = SystemConfig::class;
 
     protected $validationRules = [
-        'theme' => 'not_special_chars|max_length[255]|required'
+        'theme' => 'not_special_chars|max_length[255]'
     ];
 
     protected $fieldLabels = [
