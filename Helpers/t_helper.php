@@ -8,11 +8,11 @@ use BasicApp\I18n\Models\TranslationModel;
 
 if (!function_exists('t'))
 {
-	function t(string $category, string $string = '', array $params = []) : string
-	{
+    function t(string $category, string $string = '', array $params = []) : string
+    {
         if (class_exists(TranslationModel::class))
         {
-    		$data = TranslationModel::getEntity(
+            $data = TranslationModel::getEntity(
                 [
                     'translation_category' => $category, 
                     'translation_source' => $string,
@@ -31,11 +31,11 @@ if (!function_exists('t'))
             $return = $string;
         }
 
-		if ($params)
-		{
-			$return = strtr($return, $params);
-		}
+        if ($params)
+        {
+            $return = strtr($return, $params);
+        }
 
-		return $return;
-	}
+        return $return;
+    }
 }

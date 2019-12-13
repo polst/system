@@ -8,7 +8,7 @@ use BasicApp\System\Forms\SystemConfigForm;
 
 SystemEvents::onPreSystem(function()
 {
-    helper(['app_view', 't']);
+    helper(['app_view', 't', 'current_lang']);
 });
 
 SystemEvents::onValidation(function($event)
