@@ -25,6 +25,8 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
 
     const EVENT_VIEW = 'ba:view';
 
+    const EVENT_IMAGES = 'ba:images';
+
     const EVENT_VALIDATION = 'ba:validation';
 
     const EVENT_PAGER = 'ba:pager';
@@ -35,7 +37,7 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
 
     const EVENT_CONTROLLER = 'ba:controller';
 
-    const EVENT_REGISTER_ASSETS = 'ba:controller';
+    const EVENT_REGISTER_ASSETS = 'ba:register_assets';
 
     const EVENT_USER_MENU = 'ba:user_menu';
 
@@ -106,6 +108,11 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
     public static function onView($callback)
     {
         static::on(static::EVENT_VIEW, $callback);
+    }
+
+    public static function onImages($callback)
+    {
+        static::on(static::EVENT_IMAGES, $callback);
     }
 
     public static function onValidation($callback)
@@ -194,6 +201,11 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
     public static function userAgents($userAgents)
     {
         static::trigger(static::EVENT_USER_AGENTS, $userAgents);
+    }
+
+    public static function images($images)
+    {
+        static::trigger(static::EVENT_IMAGES, $images);
     }
 
     public static function controller($controller)
