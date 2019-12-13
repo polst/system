@@ -1,9 +1,5 @@
 <?php
-/**
- * @author Basic App Dev Team <dev@basic-app.com>
- * @license MIT
- * @link http://basic-app.com
- */
+
 use BasicApp\System\SystemEvents;
 use BasicApp\Admin\AdminEvents;
 use BasicApp\Site\SiteEvents;
@@ -12,7 +8,7 @@ use BasicApp\System\Forms\SystemConfigForm;
 
 SystemEvents::onPreSystem(function()
 {
-    helper('app_view');
+    helper(['app_view', 't']);
 });
 
 SystemEvents::onValidation(function($event)
