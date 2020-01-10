@@ -4,8 +4,8 @@
  * @license MIT
  * @link http://basic-app.com
  */
-namespace BasicApp\System\Forms;
+namespace BasicApp\Site\Events;
 
-class SystemConfigForm extends BaseSystemConfigForm
+class SitePagerEvent extends \BasicApp\Core\Event
 {
 }
