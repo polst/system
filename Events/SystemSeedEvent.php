@@ -4,9 +4,9 @@
  * @license MIT
  * @link http://basic-app.com
  */
-namespace BasicApp\Site\Events;
+namespace BasicApp\System\Events;
 
-class SystemResetEvent extends \BasicApp\Core\Event
+class SystemSeedEvent extends \BasicApp\Core\Event
 {
 
     public $params = [];

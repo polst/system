@@ -7,7 +7,7 @@
 namespace BasicApp\System;
 
 use BasicApp\Core\Event;
-use BasicApp\System\Events\SystemTruncateEvent;
+use BasicApp\System\Events\SystemResetEvent;
 use BasicApp\System\Events\SystemSeedEvent;
 
 abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
@@ -157,12 +157,20 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
 
     public static function seed(array $params = [])
     {
-        static::trigger(static::EVENT_SEED);
+        $event = new SystemSeedEvent;
+
+        $event->params = $params;
+
+        static::trigger(static::EVENT_SEED, $event);
     }
 
     public static function reset(array $params = [])
     {
-        static::trigger(static::EVENT_RESET);
+        $event = new SystemResetEvent;
+
+        $event->params = $params;
+
+        static::trigger(static::EVENT_RESET, $event);
     }    
 
     public static function pager($pager)
