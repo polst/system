@@ -6,6 +6,9 @@
  */
 namespace BasicApp\Site\Events;
 
-class SystemPagerEvent extends \BasicApp\Core\Event
+class SystemResetEvent extends \BasicApp\Core\Event
 {
+
+    public $params = [];
+
 }

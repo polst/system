@@ -7,6 +7,8 @@
 namespace BasicApp\System;
 
 use BasicApp\Core\Event;
+use BasicApp\System\Events\SystemTruncateEvent;
+use BasicApp\System\Events\SystemSeedEvent;
 
 abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
 {
@@ -18,6 +20,8 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
     const EVENT_UPDATE = 'ba:update';
 
     const EVENT_SEED = 'ba:seed';
+
+    const EVENT_RESET = 'ba:reset';
 
     const EVENT_THEMES = 'ba:themes';
     
@@ -95,6 +99,11 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
         static::on(static::EVENT_SEED, $callback);
     }
 
+    public static function onReset($callback)
+    {
+        static::on(static::EVENT_RESET, $callback);
+    }
+
     public static function onThemes($callback)
     {
         static::on(static::EVENT_THEMES, $callback);
@@ -148,19 +157,13 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
 
     public static function seed(array $params = [])
     {
-        $event = new Event;
-
-        if (array_search('reset', $params) !== false)
-        {
-            $event->reset = true;
-        }
-        else
-        {
-            $event->reset = false;
-        }
-
-        static::trigger(static::EVENT_SEED, $event);
+        static::trigger(static::EVENT_SEED);
     }
+
+    public static function reset(array $params = [])
+    {
+        static::trigger(static::EVENT_RESET);
+    }    
 
     public static function pager($pager)
     {
