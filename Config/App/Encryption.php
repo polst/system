@@ -4,8 +4,8 @@
  * @license MIT
  * @link http://basic-app.com
  */
-namespace BasicApp\System\Components\Config;
+namespace BasicApp\System\Config\App;
 
-abstract class AppLogger extends \CodeIgniter\Config\BaseConfig
+abstract class Encryption extends BaseEncryption
 {
 }

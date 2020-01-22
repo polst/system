@@ -6,6 +6,16 @@
  */
 namespace BasicApp\System\Config\App;
 
-abstract class BaseEncryption extends \BasicApp\System\Components\Config\AppEncryption
+use BasicApp\System\SystemEvents;
+
+abstract class BaseEncryption extends \CodeIgniter\Config\BaseConfig
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        SystemEvents::encryption($this);
+    }
+
 }

@@ -4,8 +4,8 @@
  * @license MIT
  * @link http://basic-app.com
  */
-namespace BasicApp\System\Components\Config;
+namespace BasicApp\System\Config\App;
 
-abstract class AppCache extends \CodeIgniter\Config\BaseConfig
+abstract class View extends BaseView
 {
 }

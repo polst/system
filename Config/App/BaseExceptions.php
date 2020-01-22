@@ -6,6 +6,6 @@
  */
 namespace BasicApp\System\Config\App;
 
-abstract class BaseExceptions extends \BasicApp\System\Components\Config\AppExceptions
+abstract class BaseExceptions
 {
 }

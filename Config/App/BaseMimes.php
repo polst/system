@@ -6,6 +6,16 @@
  */
 namespace BasicApp\System\Config\App;
 
-abstract class BaseMimes extends \BasicApp\System\Components\Config\AppMimes
+use BasicApp\System\SystemEvents;
+
+abstract class BaseMimes
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        SystemEvents::mimes($this);
+    }
+
 }

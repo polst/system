@@ -4,8 +4,8 @@
  * @license MIT
  * @link http://basic-app.com
  */
-namespace BasicApp\System\Components\Config;
+namespace BasicApp\System\Config\App;
 
-abstract class AppDatabase extends \CodeIgniter\Database\Config
+abstract class UserAgents extends BaseUserAgents
 {
 }

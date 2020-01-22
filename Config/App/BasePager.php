@@ -6,6 +6,16 @@
  */
 namespace BasicApp\System\Config\App;
 
-abstract class BasePager extends \BasicApp\System\Components\Config\AppPager
+use BasicApp\System\SystemEvents;
+
+abstract class BasePager extends \CodeIgniter\Config\BaseConfig
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        SystemEvents::pager($this);
+    }
+
 }

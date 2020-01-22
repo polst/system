@@ -6,6 +6,16 @@
  */
 namespace BasicApp\System\Config\App;
 
-abstract class BaseForeignCharactes extends \BasicApp\System\Components\Config\AppForeignCharacters
+use BasicApp\System\SystemEvents;
+
+abstract class BaseForeignCharacters extends \CodeIgniter\Config\ForeignCharacters
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        SystemEvents::foreignCharacters($this);
+    }
+
 }

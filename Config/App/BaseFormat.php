@@ -6,6 +6,16 @@
  */
 namespace BasicApp\System\Config\App;
 
-abstract class BaseFormat extends \BasicApp\System\Components\Config\AppFormat
+use BasicApp\System\SystemEvents;
+
+abstract class BaseFormat extends \CodeIgniter\Config\BaseConfig
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        SystemEvents::format($this);
+    }
+
 }

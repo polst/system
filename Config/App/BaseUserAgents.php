@@ -6,6 +6,16 @@
  */
 namespace BasicApp\System\Config\App;
 
-abstract class BaseUserAgents extends \BasicApp\System\Components\Config\AppUserAgents
+use BasicApp\System\SystemEvents;
+
+abstract class BaseUserAgents extends \CodeIgniter\Config\BaseConfig
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        SystemEvents::userAgents($this);
+    }
+
 }

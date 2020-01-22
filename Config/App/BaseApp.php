@@ -6,6 +6,6 @@
  */
 namespace BasicApp\System\Config\App;
 
-abstract class BaseApp extends \BasicApp\System\Components\Config\App
+abstract class BaseApp extends \CodeIgniter\Config\BaseConfig
 {
 }

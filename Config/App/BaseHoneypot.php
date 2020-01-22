@@ -6,6 +6,16 @@
  */
 namespace BasicApp\System\Config\App;
 
-abstract class BaseHoneypot extends \BasicApp\System\Components\Config\AppHoneypot
+use BasicApp\System\SystemEvents;
+
+abstract class BaseHoneypot extends \CodeIgniter\Config\BaseConfig
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        SystemEvents::honeypot($this);
+    }
+
 }

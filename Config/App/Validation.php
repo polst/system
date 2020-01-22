@@ -6,6 +6,6 @@
  */
 namespace BasicApp\System\Config\App;
 
-abstract class BaseContentSecurityPolicy extends \BasicApp\System\Components\Config\AppContentSecurityPolicy
+abstract class Validation extends BaseValidation
 {
 }

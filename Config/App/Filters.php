@@ -6,6 +6,6 @@
  */
 namespace BasicApp\System\Config\App;
 
-abstract class BaseCache extends \CodeIgniter\Config\BaseConfig
+abstract class Filters extends BaseFilters
 {
 }

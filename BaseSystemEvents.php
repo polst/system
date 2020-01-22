@@ -22,8 +22,6 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
     const EVENT_SEED = 'ba:seed';
 
     const EVENT_RESET = 'ba:reset';
-
-    const EVENT_THEMES = 'ba:themes';
     
     const EVENT_FILTERS = 'ba:filters';
 
@@ -33,41 +31,11 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
 
     const EVENT_VALIDATION = 'ba:validation';
 
-    const EVENT_PAGER = 'ba:pager';
-
     const EVENT_EMAIL = 'ba:email';
 
     const EVENT_USER_AGENTS = 'ba:user_agents';
 
-    const EVENT_CONTROLLER = 'ba:controller';
-
-    const EVENT_REGISTER_ASSETS = 'ba:register_assets';
-
-    const EVENT_USER_MENU = 'ba:user_menu';
-
-    const EVENT_ACCOUNT_MENU = 'ba:account_menu';
-
-    const EVENT_MAIN_LAYOUT = 'ba:main_layout';
-
-    public static function onUserMenu($callback)
-    {
-        static::on(static::EVENT_USER_MENU, $callback);
-    }
-
-    public static function onMainLayout($callback)
-    {
-        static::on(static::EVENT_MAIN_LAYOUT, $callback);
-    }
-
-    public static function onAccountMenu($callback)
-    {
-        static::on(static::EVENT_ACCOUNT_MENU, $callback);
-    }
-
-    public static function onRegisterAssets($callback)
-    {
-        static::on(static::EVENT_REGISTER_ASSETS, $callback);
-    }
+    const EVENT_PAGER = 'ba:pager';
 
     public static function onPreSystem($callback)
     {
@@ -77,11 +45,6 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
     public static function onDbQuery($callback)
     {
         static::on(static::EVENT_DB_QUERY, $callback);
-    }
-
-    public static function onController($callback)
-    {
-        static::on(static::EVENT_CONTROLLER, $callback);
     }
     
     public static function onUserAgents($callback)
@@ -102,11 +65,6 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
     public static function onReset($callback)
     {
         static::on(static::EVENT_RESET, $callback);
-    }
-
-    public static function onThemes($callback)
-    {
-        static::on(static::EVENT_THEMES, $callback);
     }
 
     public static function onFilters($callback)
@@ -193,17 +151,6 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
         static::trigger(static::EVENT_FILTERS, $filters);
     }
 
-    public static function themes($return = [])
-    {
-        $event = new Event;
-
-        $event->result = $return;
-
-        static::trigger(static::EVENT_THEMES, $event);
-
-        return $event->result;
-    }
-
     public static function email($email)
     {
         static::trigger(static::EVENT_EMAIL, $email);
@@ -217,81 +164,6 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
     public static function images($images)
     {
         static::trigger(static::EVENT_IMAGES, $images);
-    }
-
-    public static function controller($controller)
-    {
-        static::trigger(static::EVENT_CONTROLLER, $controller);
-    }
-
-    public static function registerAssets(&$head, &$beginBody, &$endBody)
-    {
-        $event = new Event;
-
-        $event->head = $head;
-
-        $event->beginBody = $beginBody;
-
-        $event->endBody = $endBody;
-
-        static::trigger(static::EVENT_REGISTER_ASSETS, $event);
-
-        $head = $event->head;
-
-        $beginBody = $event->beginBody;
-
-        $endBody = $event->endBody;
-    }
-
-    public static function userMenu()
-    {
-        $event = new Event;
-
-        $event->items = [];
-
-        static::trigger(static::EVENT_USER_MENU, $event);
-
-        $view = service('renderer');
-
-        $data = $view->getData();
-
-        if (array_key_exists('userMenu', $data))
-        {
-            return array_merge_recursive($event->items, $data['userMenu']);
-        }
-
-        return $event->items;
-    }
-
-    public static function accountMenu()
-    {
-        $event = new Event;
-
-        $event->items = [];
-
-        static::trigger(static::EVENT_ACCOUNT_MENU, $event);
-
-        $view = service('renderer');
-
-        $data = $view->getData();
-
-        if (array_key_exists('accountMenu', $data))
-        {
-            return array_merge_recursive($event->items, $data['accountMenu']);
-        }
-
-        return $event->items;
-    }
-
-    public static function mainLayout(array $params = [])
-    {
-        $event = new Event;
-
-        $event->params = $params;
-
-        static::trigger(static::EVENT_MAIN_LAYOUT, $event);
-
-        return $event->params;
     }
        
 }

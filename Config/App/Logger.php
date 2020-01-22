@@ -4,8 +4,8 @@
  * @license MIT
  * @link http://basic-app.com
  */
-namespace BasicApp\System\Components\Config;
+namespace BasicApp\System\Config\App;
 
-abstract class AppMigrations extends \CodeIgniter\Config\BaseConfig
+abstract class Logger extends BaseLogger
 {
 }

@@ -6,6 +6,16 @@
  */
 namespace BasicApp\System\Config\App;
 
-abstract class BaseDocTypes extends \BasicApp\System\Components\Config\AppDocTypes
+use BasicApp\System\SystemEvents;
+
+abstract class BaseDocTypes
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        SystemEvents::docTypes($this);
+    }
+
 }
