@@ -7,7 +7,6 @@
         }
     },
     "require": {
-        "denis303/codeigniter4-nested-views": "*",
         "basic-app/core": "*"
     }
 }
