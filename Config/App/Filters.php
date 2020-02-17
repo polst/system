@@ -6,6 +6,16 @@
  */
 namespace BasicApp\System\Config\App;
 
-abstract class Filters extends BaseFilters
+use BasicApp\System\SystemEvents;
+
+class Filters extends \CodeIgniter\Config\BaseConfig
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        SystemEvents::filters($this);
+    }
+
 }

@@ -6,6 +6,16 @@
  */
 namespace BasicApp\System\Config\App;
 
-abstract class Images extends BaseImages
+use BasicApp\System\SystemEvents;
+
+class Images extends \CodeIgniter\Config\BaseConfig
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        SystemEvents::images($this);
+    }
+
 }

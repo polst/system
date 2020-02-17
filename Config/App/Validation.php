@@ -6,6 +6,14 @@
  */
 namespace BasicApp\System\Config\App;
 
-abstract class Validation extends BaseValidation
+use BasicApp\System\SystemEvents;
+
+class Validation
 {
+
+    public function __construct()
+    {
+        SystemEvents::validation($this);
+    }
+
 }

@@ -6,6 +6,14 @@
  */
 namespace BasicApp\System\Config\App;
 
-abstract class Email extends BaseEmail
+use BasicApp\System\SystemEvents;
+
+class Email extends \CodeIgniter\Config\BaseConfig
 {
+
+    public function __construct()
+    {
+        SystemEvents::email($this);
+    }
+
 }

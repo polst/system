@@ -6,6 +6,6 @@
  */
 namespace BasicApp\System\Config\App;
 
-abstract class Cache extends BaseCache
+class Cache extends \CodeIgniter\Config\BaseConfig
 {
 }

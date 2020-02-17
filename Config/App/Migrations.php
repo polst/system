@@ -6,6 +6,6 @@
  */
 namespace BasicApp\System\Config\App;
 
-abstract class Migrations extends BaseMigrations
+class Migrations extends \CodeIgniter\Config\BaseConfig
 {
 }

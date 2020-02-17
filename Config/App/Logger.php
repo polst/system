@@ -6,6 +6,6 @@
  */
 namespace BasicApp\System\Config\App;
 
-abstract class Logger extends BaseLogger
+class Logger extends \CodeIgniter\Config\BaseConfig
 {
 }

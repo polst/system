@@ -6,6 +6,6 @@
  */
 namespace BasicApp\System\Config\App;
 
-abstract class Toolbar extends BaseToolbar
+class Toolbar extends \CodeIgniter\Config\BaseConfig
 {
 }

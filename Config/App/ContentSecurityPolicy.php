@@ -8,12 +8,14 @@ namespace BasicApp\System\Config\App;
 
 use BasicApp\System\SystemEvents;
 
-abstract class BaseValidation
+class ContentSecurityPolicy extends \CodeIgniter\Config\BaseConfig
 {
 
     public function __construct()
     {
-        SystemEvents::validation($this);
+        parent::__construct();
+
+        SystemEvents::contentSecurityPolicy($this);
     }
 
 }

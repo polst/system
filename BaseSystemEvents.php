@@ -9,6 +9,14 @@ namespace BasicApp\System;
 use BasicApp\Core\Event;
 use BasicApp\System\Events\SystemResetEvent;
 use BasicApp\System\Events\SystemSeedEvent;
+use BasicApp\System\Config\App\ContentSecurityPolicy;
+use BasicApp\System\Config\App\Images;
+use BasicApp\System\Config\App\UserAgents;
+use BasicApp\System\Config\App\Email;
+use BasicApp\System\Config\App\Filters;
+use BasicApp\System\Config\App\View;
+use BasicApp\System\Config\App\Validation;
+use BasicApp\System\Config\App\Pager;
 
 abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
 {
@@ -36,6 +44,8 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
     const EVENT_USER_AGENTS = 'ba:user_agents';
 
     const EVENT_PAGER = 'ba:pager';
+
+    const EVENT_CONTENT_SECURITY_POLICY = 'ba:content_security_policy';
 
     public static function onPreSystem($callback)
     {
@@ -97,6 +107,11 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
         static::on(static::EVENT_EMAIL, $callback);
     }
 
+    public static function onContentSecurityPolicy($callback)
+    {
+        static::on(static::EVENT_CONTENT_SECURITY_POLICY, $callback);
+    }
+
     public static function update(array $params = [])
     {
         $event = new Event;
@@ -131,39 +146,44 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
         static::trigger(static::EVENT_RESET, $event);
     }    
 
-    public static function pager($pager)
+    public static function pager(Pager $pager)
     {
         static::trigger(static::EVENT_PAGER, $pager);
     }
 
-    public static function validation($validation)
+    public static function validation(Validation $validation)
     {
         static::trigger(static::EVENT_VALIDATION, $validation);
     }
 
-    public static function view($view)
+    public static function view(View $view)
     {
         static::trigger(static::EVENT_VIEW, $view);
     }
 
-    public static function filters($filters)
+    public static function filters(Filters $filters)
     {
         static::trigger(static::EVENT_FILTERS, $filters);
     }
 
-    public static function email($email)
+    public static function email(Email $email)
     {
         static::trigger(static::EVENT_EMAIL, $email);
     }
 
-    public static function userAgents($userAgents)
+    public static function userAgents(UserAgents$userAgents)
     {
         static::trigger(static::EVENT_USER_AGENTS, $userAgents);
     }
 
-    public static function images($images)
+    public static function images(Images $images)
     {
         static::trigger(static::EVENT_IMAGES, $images);
     }
+
+    public static function contentSecurityPolicy(ContentSecurityPolicy $contentSecurityPolicy)
+    {
+        static::trigger(static::EVENT_CONTENT_SECURITY_POLICY, $contentSecurityPolicy);
+    }    
        
 }

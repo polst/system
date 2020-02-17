@@ -6,6 +6,16 @@
  */
 namespace BasicApp\System\Config\App;
 
-abstract class View extends BaseView
+use BasicApp\System\SystemEvents;
+
+class View extends \CodeIgniter\Config\View
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        SystemEvents::view($this);
+    }
+
 }
