@@ -17,6 +17,7 @@ use BasicApp\System\Config\App\Filters;
 use BasicApp\System\Config\App\View;
 use BasicApp\System\Config\App\Validation;
 use BasicApp\System\Config\App\Pager;
+use BasicApp\System\Config\App\Kint;
 
 abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
 {
@@ -46,6 +47,13 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
     const EVENT_PAGER = 'ba:pager';
 
     const EVENT_CONTENT_SECURITY_POLICY = 'ba:content_security_policy';
+
+    const EVENT_KINT = 'ba:kint';
+
+    public static function onKint($callback)
+    {
+        static::on(static::EVENT_KINT, $callback);
+    }
 
     public static function onPreSystem($callback)
     {
@@ -184,6 +192,11 @@ abstract class BaseSystemEvents extends \CodeIgniter\Events\Events
     public static function contentSecurityPolicy(ContentSecurityPolicy $contentSecurityPolicy)
     {
         static::trigger(static::EVENT_CONTENT_SECURITY_POLICY, $contentSecurityPolicy);
-    }    
-       
+    }
+     
+    public static function kint(Kint $kint)
+    {
+        static::trigger(static::EVENT_KINT, $kint);
+    }
+
 }
