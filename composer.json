@@ -7,12 +7,12 @@
         }
     },
     "require": {
-        "basic-app/core": "*"
+        "basic-app/core": "dev-master"
     },
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/polst/core.git"
+            "url": "https://github.com/polst/core"
         }
     ]
 }
