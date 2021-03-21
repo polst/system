@@ -8,5 +8,11 @@
     },
     "require": {
         "basic-app/core": "*"
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/polst/core.git"
+        }
+    ]
 }
